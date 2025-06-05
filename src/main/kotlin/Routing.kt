@@ -1,5 +1,6 @@
 package br.com.manogarrafa
 
+import br.com.manogarrafa.utils.readFile
 import io.ktor.http.*
 import io.ktor.resources.*
 import io.ktor.serialization.kotlinx.json.*
@@ -20,6 +21,7 @@ fun Application.configureRouting() {
     install(Resources)
     routing {
         get("/") {
+            readFile()
             call.respondText("Hello World!")
         }
         get<Articles> { article ->
