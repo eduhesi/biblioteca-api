@@ -2,6 +2,8 @@ package br.com.manogarrafa
 
 import io.ktor.server.application.*
 import utils.readFile
+import utils.showList
+import utils.showTotal
 
 fun main(args: Array<String>) {
     io.ktor.server.netty.EngineMain.main(args)
@@ -13,6 +15,6 @@ fun Application.module() {
     configureSerialization()
     configureRouting()
     readFile("colecao_completa.txt")
-    println("ESTRANGEIRA")
     readFile("colecao_estrangeira_completa.txt")
+    showTotal()
 }

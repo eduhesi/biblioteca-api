@@ -16,6 +16,8 @@ data class Edition(
     val state: String
 )
 
+val mangas = mutableListOf<Manga>()
+
 fun readFile(fileName: String) {
     val fileUrl = object {}.javaClass.classLoader.getResource(fileName)
         ?: run {
@@ -30,7 +32,6 @@ fun readFile(fileName: String) {
         return
     }
 
-    val mangas = mutableListOf<Manga>()
     val yearRegex = Regex("\\((\\d{4})\\)")
 
     file.useLines { lines ->
@@ -55,6 +56,7 @@ fun readFile(fileName: String) {
 
                     mangas.add(Manga(cleanTitle, publicationYear, publisher, price, quantity))
                 }
+
                 line.startsWith(" nº") -> {
                     val number = line.substringAfter(" nº").substringBefore("\t").trim().toIntOrNull()
                     val state = line.substringAfter("Estado:").trim()
@@ -64,6 +66,10 @@ fun readFile(fileName: String) {
         }
     }
 
+
+}
+
+fun showList() {
     mangas.forEach { manga ->
         println("Título: ${manga.title}")
         println("Ano de Publicação: ${manga.publicationYear ?: "Não informado"}")
@@ -78,4 +84,13 @@ fun readFile(fileName: String) {
         }
         println("---")
     }
+}
+
+fun showTotal() {
+    var total = 0
+    mangas.forEach {
+        total += it.quantity
+    }
+
+    println(total)
 }

@@ -5,7 +5,7 @@
 Alimenta Estes Olhos /Veneta Valor: R$ 67,45	Quantidade: 1
 	Estado: Excelente
 
-Alter Ego /Mpeg Editora Valor: R$ 30,51	Quantidade: 1
+Alter Ego /Mpeg Valor: R$ 30,51	Quantidade: 1
 	Estado: Excelente
 
 Anarcoma /Veneta Valor: R$ 94,90	Quantidade: 1
@@ -48,7 +48,7 @@ Banana Fish /Panini Valor: R$ 421,19	Quantidade: 10
  nº 9	Estado: Excelente
  nº 10	Estado: Excelente
 
-Batman 3ª Série /Panini Valor: R$ 175,63	Quantidade: 9
+Batman 3ª Série/Panini Valor: R$ 175,63	Quantidade: 9
  nº 45	Estado: Ótimo
  nº 46	Estado: Excelente
  nº 47	Estado: Excelente
@@ -107,7 +107,7 @@ Batman - Terra Um /Panini Valor: R$ 109,28	Quantidade: 3
 Batman 80 Anos: Detective Comics Especial /Panini Valor: R$ 32,30	Quantidade: 1
 	Estado: Excelente
 
-Batman Especial 1ª Série /Panini Valor: R$ 105,82	Quantidade: 5
+Batman Especial 1ª Série/Panini Valor: R$ 105,82	Quantidade: 5
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -295,9 +295,10 @@ Código Oráculo_, O /Panini Valor: R$ 23,03	Quantidade: 1
 Confins de Um Sonho /Pipoca & Nanquim Valor: R$ 52,40	Quantidade: 1
 	Estado: Excelente
 
-Creamy Mami: A Princesinha Mimada /Mpeg Editora Valor: R$ 75,80	Quantidade: 2
+Creamy Mami: A Princesinha Mimada /Mpeg Valor: R$ 113,70	Quantidade: 3
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
+ nº 3	Estado: Excelente
 
 Daphne Byrne /Panini Valor: R$ 50,32	Quantidade: 1
 	Estado: Excelente
@@ -329,13 +330,16 @@ DC Encontra Looney Tunes /Panini Valor: R$ 62,80	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
 
+DC Sem Palavras Por Gustavo Duarte /Panini Valor: R$ 21,53	Quantidade: 1
+	Estado: Excelente
+
 Declínio de Um Homem /JBC Valor: R$ 134,30	Quantidade: 1
 	Estado: Excelente
 
 Degenerado /Nemo Valor: R$ 41,02	Quantidade: 1
 	Estado: Excelente
 
-Detective Comics 2ª Série /Panini Valor: R$ 128,50	Quantidade: 5
+Detective Comics 2ª Série/Panini Valor: R$ 128,50	Quantidade: 5
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -392,7 +396,7 @@ Dr. Slump /Panini Valor: R$ 599,90	Quantidade: 18
 Dragon Ball Gaiden /Panini Valor: R$ 27,67	Quantidade: 1
 	Estado: Excelente
 
-Dragon Ball: Edição Definitiva /Panini Valor: R$ 1.939,49	Quantidade: 32
+Dragon Ball: Edição Definitiva /Panini Valor: R$ 2.092,31	Quantidade: 34
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -400,6 +404,8 @@ Dragon Ball: Edição Definitiva /Panini Valor: R$ 1.939,49	Quantidade: 32
  nº 5	Estado: Excelente
  nº 6	Estado: Excelente
  nº 7	Estado: Excelente
+ nº 8	Estado: Excelente
+ nº 9	Estado: Excelente
  nº 10	Estado: Excelente
  nº 11	Estado: Excelente
  nº 12	Estado: Excelente
@@ -464,7 +470,7 @@ Found Footage /Korja dos Quadrinhos Valor: R$ 110,00	Quantidade: 2
 Fredric, William e A Amazona: Perseguição e Censura Aos Quadrinhos /Pipoca & Nanquim Valor: R$ 41,90	Quantidade: 1
 	Estado: Excelente
 
-Frieren e A Jornada Para O Além /Panini Valor: R$ 321,81	Quantidade: 11
+Frieren e A Jornada Para O Além /Panini Valor: R$ 399,27	Quantidade: 13
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -476,26 +482,49 @@ Frieren e A Jornada Para O Além /Panini Valor: R$ 321,81	Quantidade: 11
  nº 9	Estado: Excelente
  nº 10	Estado: Excelente
  nº 11	Estado: Excelente
+ nº 12	Estado: Excelente
+ nº 13	Estado: Excelente
 
 Fronteiras do Além /Pipoca & Nanquim Valor: R$ 53,55	Quantidade: 1
 	Estado: Excelente
 
-Fullmetal Alchemist 2ª Série /JBC Valor: R$ 44,90	Quantidade: 2
+Fullmetal Alchemist 2ª Série/JBC Valor: R$ 44,90	Quantidade: 2
  nº 19	Estado: Ótimo
  nº 21	Estado: Bom
 
 Funny Creek /Pipoca & Nanquim Valor: R$ 69,90	Quantidade: 1
 	Estado: Excelente
 
-Garota do Mar, A /Record Valor: R$ 38,40	Quantidade: 1
-	Estado: Excelente
-
-Gash Bell!! /Mpeg Editora Valor: R$ 261,55	Quantidade: 5
+Gantz /Panini Valor: R$ 389,03	Quantidade: 18
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
  nº 4	Estado: Excelente
  nº 5	Estado: Excelente
+ nº 6	Estado: Excelente
+ nº 7	Estado: Excelente
+ nº 8	Estado: Excelente
+ nº 9	Estado: Excelente
+ nº 10	Estado: Excelente
+ nº 11	Estado: Excelente
+ nº 12	Estado: Excelente
+ nº 13	Estado: Excelente
+ nº 14	Estado: Excelente
+ nº 15	Estado: Excelente
+ nº 16	Estado: Excelente
+ nº 17	Estado: Excelente
+ nº 18	Estado: Excelente
+
+Garota do Mar, A /Record Valor: R$ 38,40	Quantidade: 1
+	Estado: Excelente
+
+Gash Bell!! /Mpeg Valor: R$ 313,86	Quantidade: 6
+ nº 1	Estado: Excelente
+ nº 2	Estado: Excelente
+ nº 3	Estado: Excelente
+ nº 4	Estado: Excelente
+ nº 5	Estado: Excelente
+ nº 6	Estado: Excelente
 
 Girl Friends /Newpop Valor: R$ 129,80	Quantidade: 5
  nº 1	Estado: Excelente
@@ -558,7 +587,7 @@ Ilha dos Ratos /Independente Valor: R$ 0,00	Quantidade: 1
 Incognegro /Veneta Valor: R$ 24,95	Quantidade: 1
 	Estado: Excelente
 
-Inuyasha Wideban /JBC Valor: R$ 712,27	Quantidade: 13
+Inuyasha Wideban /JBC Valor: R$ 771,47	Quantidade: 14
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -572,6 +601,12 @@ Inuyasha Wideban /JBC Valor: R$ 712,27	Quantidade: 13
  nº 11	Estado: Excelente
  nº 12	Estado: Excelente
  nº 13	Estado: Excelente
+ nº 14	Estado: Excelente
+
+Invencível /Panini Valor: R$ 101,01	Quantidade: 3
+ nº 1	Estado: Excelente
+ nº 2	Estado: Excelente
+ nº 3	Estado: Excelente
 
 Jimmy Corrigan - O Menino Mais Esperto do Mundo /Cia. das Letras Valor: R$ 53,30	Quantidade: 1
 	Estado: Excelente
@@ -627,7 +662,7 @@ Kill La Kill /JBC Valor: R$ 39,00	Quantidade: 3
 King /Veneta Valor: R$ 44,98	Quantidade: 1
 	Estado: Excelente
 
-Komi Não Consegue Se Comunicar /Panini Valor: R$ 1.080,28	Quantidade: 32
+Komi Não Consegue Se Comunicar /Panini Valor: R$ 1.154,36	Quantidade: 34
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -660,6 +695,8 @@ Komi Não Consegue Se Comunicar /Panini Valor: R$ 1.080,28	Quantidade: 32
  nº 30	Estado: Excelente
  nº 31	Estado: Excelente
  nº 32	Estado: Excelente
+ nº 33	Estado: Excelente
+ nº 34	Estado: Excelente
 
 Konosuba: Abençoado Mundo Maravilhoso! /Panini Valor: R$ 450,85	Quantidade: 19
  nº 1	Estado: Excelente
@@ -724,7 +761,7 @@ Lost Girls /Mythos Valor: R$ 89,50	Quantidade: 1
 Louca do Sagrado Coração, A /Veneta Valor: R$ 78,92	Quantidade: 1
 	Estado: Excelente
 
-Love Hina 2ª Série /JBC Valor: R$ 300,00	Quantidade: 14
+Love Hina 2ª Série/JBC Valor: R$ 300,00	Quantidade: 14
  nº 1	Estado: Muito bom
  nº 2	Estado: Muito bom
  nº 3	Estado: Muito bom
@@ -743,7 +780,18 @@ Love Hina 2ª Série /JBC Valor: R$ 300,00	Quantidade: 14
 Lovistori /Brasa Editora Valor: R$ 79,90	Quantidade: 1
 	Estado: Excelente
 
-Lycoris Recoil /Panini Valor: R$ 39,92	Quantidade: 1
+Lycoris Recoil /Panini Valor: R$ 137,74	Quantidade: 3
+ nº 1	Estado: Excelente
+ nº 2	Estado: Excelente
+ nº 3	Estado: Excelente
+
+Lycoris Recoil - Anthology - React /Panini Valor: R$ 47,51	Quantidade: 1
+	Estado: Excelente
+
+Lycoris Recoil - Anthology - Reload /Panini Valor: R$ 50,31	Quantidade: 1
+ nº 1	Estado: Excelente
+
+Lycoris Recoil - Anthology - Repeat /Panini Valor: R$ 50,31	Quantidade: 1
  nº 1	Estado: Excelente
 
 Maiores Super-Heróis do Mundo, Os (2ª Edição) /Panini Valor: R$ 141,56	Quantidade: 1
@@ -789,6 +837,9 @@ Minha Experiência Lésbica Com A Solidão /Newpop Valor: R$ 26,90	Quantidade: 1
 Minha Experiência Lésbica Com A Solidão (Edição Atualizada) /Newpop Valor: R$ 31,90	Quantidade: 1
 	Estado: Excelente
 
+Mistérios de Batman e Scooby-Doo, Os /Panini Valor: R$ 12,90	Quantidade: 1
+ nº 1	Estado: Excelente
+
 Mob Psycho 100 /Panini Valor: R$ 39,80	Quantidade: 2
  nº 15	Estado: Bom
  nº 16	Estado: Excelente
@@ -832,7 +883,7 @@ Na Mente de Sherlock Holmes /Pipoca & Nanquim Valor: R$ 76,93	Quantidade: 1
 Na Prisão /Conrad Valor: R$ 41,85	Quantidade: 1
 	Estado: Bom
 
-Nana /JBC Valor: R$ 3.565,18	Quantidade: 19
+Nana /JBC Valor: R$ 3.599,85	Quantidade: 20
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -852,11 +903,12 @@ Nana /JBC Valor: R$ 3.565,18	Quantidade: 19
  nº 17	Estado: Excelente
  nº 18	Estado: Excelente
  nº 19	Estado: Excelente
+ nº 20	Estado: Excelente
 
 Naturezas Mortas /Faria e Silva Editora Valor: R$ 55,00	Quantidade: 1
 	Estado: Excelente
 
-New Normal /Mpeg Editora Valor: R$ 75,80	Quantidade: 2
+New Normal /Mpeg Valor: R$ 75,80	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
 
@@ -883,7 +935,7 @@ Peepland /Skript Editora Valor: R$ 66,00	Quantidade: 1
 Pele de Homem /Nemo Valor: R$ 38,00	Quantidade: 1
 	Estado: Excelente
 
-Perfect World /Newpop Valor: R$ 236,70	Quantidade: 9
+Perfect World /Newpop Valor: R$ 263,00	Quantidade: 10
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -893,6 +945,7 @@ Perfect World /Newpop Valor: R$ 236,70	Quantidade: 9
  nº 7	Estado: Excelente
  nº 8	Estado: Excelente
  nº 9	Estado: Excelente
+ nº 10	Estado: Excelente
 
 Persépolis - Completo /Cia. das Letras Valor: R$ 31,90	Quantidade: 1
 	Estado: Excelente
@@ -925,7 +978,7 @@ Prelúdio do Arco-Íris /Newpop Valor: R$ 19,79	Quantidade: 1
 Princesa e O Cavaleiro - A Noite da Princesa, A /JBC Valor: R$ 23,96	Quantidade: 1
 	Estado: Excelente
 
-Princesa e O Cavaleiro, A 2ª Série /JBC Valor: R$ 122,30	Quantidade: 2
+Princesa e O Cavaleiro, A 2ª Série/JBC Valor: R$ 122,30	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
 
@@ -954,7 +1007,7 @@ Rorschach /Panini Valor: R$ 66,82	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
 
-Saga do Batman, A 1ª Série /Panini Valor: R$ 295,51	Quantidade: 10
+Saga do Batman, A 1ª Série/Panini Valor: R$ 295,51	Quantidade: 10
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -966,7 +1019,7 @@ Saga do Batman, A 1ª Série /Panini Valor: R$ 295,51	Quantidade: 10
  nº 9	Estado: Excelente
  nº 10	Estado: Excelente
 
-Saga do Superman, A 1ª Série /Panini Valor: R$ 129,12	Quantidade: 4
+Saga do Superman, A 1ª Série/Panini Valor: R$ 129,12	Quantidade: 4
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -982,7 +1035,7 @@ Senhor Milagre /Panini Valor: R$ 48,80	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
 
-Sirius: Estrelas Gêmeas /Mpeg Editora Valor: R$ 30,90	Quantidade: 1
+Sirius: Estrelas Gêmeas /Mpeg Valor: R$ 30,90	Quantidade: 1
 	Estado: Excelente
 
 Sky Masters da Força Espacial /Pipoca & Nanquim Valor: R$ 77,94	Quantidade: 1
@@ -1004,6 +1057,9 @@ Sunset Orange /Newpop Valor: R$ 21,90	Quantidade: 1
 Sunstone /Indievisivel Press Valor: R$ 108,90	Quantidade: 2
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
+
+Supergirl: Mulher do Amanhã - Edição de Luxo /Panini Valor: R$ 103,70	Quantidade: 1
+	Estado: Excelente
 
 Superman - O Que Aconteceu Ao Homem de Aço? (2ª Edição) /Panini Valor: R$ 23,90	Quantidade: 1
 	Estado: Excelente
@@ -1102,7 +1158,7 @@ Tex (2ª Edição) /Globo Valor: R$ 0,00	Quantidade: 12
  nº 148	Estado: Ruim
  nº 149	Estado: Bom
 
-Tex Gigante 1ª Série /Mythos Valor: R$ 1.181,45	Quantidade: 40
+Tex Gigante 1ª Série/Mythos Valor: R$ 1.181,45	Quantidade: 40
  nº 1	Estado: Bom
  nº 2	Estado: Bom
  nº 3	Estado: Excelente
@@ -1144,7 +1200,7 @@ Tex Gigante 1ª Série /Mythos Valor: R$ 1.181,45	Quantidade: 40
  nº 39	Estado: Excelente
  nº 40	Estado: Excelente
 
-That Time I Got Reincarnated As A Slime /JBC Valor: R$ 550,98	Quantidade: 20
+That Time I Got Reincarnated As A Slime /JBC Valor: R$ 586,90	Quantidade: 21
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -1165,6 +1221,7 @@ That Time I Got Reincarnated As A Slime /JBC Valor: R$ 550,98	Quantidade: 20
  nº 18	Estado: Excelente
  nº 19	Estado: Excelente
  nº 20	Estado: Excelente
+ nº 21	Estado: Excelente
 
 The Umbrella Academy: Dallas (3ª Edição) /Devir Valor: R$ 37,50	Quantidade: 1
 	Estado: Excelente
@@ -1189,7 +1246,7 @@ Torpedo 1936 /Figura Valor: R$ 114,00	Quantidade: 3
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
 
-Tower of God /Panini Valor: R$ 399,76	Quantidade: 11
+Tower of God /Panini Valor: R$ 453,67	Quantidade: 12
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -1201,6 +1258,7 @@ Tower of God /Panini Valor: R$ 399,76	Quantidade: 11
  nº 9	Estado: Excelente
  nº 10	Estado: Excelente
  nº 11	Estado: Excelente
+ nº 12	Estado: Excelente
 
 Trilogia Gatilho /Pipoca & Nanquim Valor: R$ 69,90	Quantidade: 1
 	Estado: Excelente
@@ -1212,13 +1270,14 @@ Túmulo do Batman, O /Panini Valor: R$ 69,80	Quantidade: 2
 Último Voo das Borboletas, O /Pipoca & Nanquim Valor: R$ 35,90	Quantidade: 1
 	Estado: Excelente
 
-Um Amor Impossível! Ou Não… /Panini Valor: R$ 224,09	Quantidade: 6
+Um Amor Impossível! Ou Não… /Panini Valor: R$ 263,60	Quantidade: 7
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
  nº 4	Estado: Excelente
  nº 5	Estado: Excelente
  nº 6	Estado: Excelente
+ nº 7	Estado: Excelente
 
 Um Bairro Distante /Pipoca & Nanquim Valor: R$ 58,00	Quantidade: 1
 	Estado: Excelente
@@ -1231,6 +1290,12 @@ Universo DC Por Alan Moore /Panini Valor: R$ 151,92	Quantidade: 1
 
 Valentina - Os Subterrâneos /L&PM Valor: R$ 21,99	Quantidade: 1
 	Estado: Excelente
+
+Vampeerz /JBC Valor: R$ 38,32	Quantidade: 1
+ nº 1	Estado: Excelente
+
+Viajantes do Fim, As /Baú Editora Valor: R$ 51,95	Quantidade: 1
+ nº 1	Estado: Excelente
 
 Visão: Eu Também Serei Salvo Pelo Amor /Panini Valor: R$ 52,90	Quantidade: 1
 	Estado: Excelente
@@ -1256,7 +1321,7 @@ Watchmen - Edição Definitiva (4ª Edição) /Panini Valor: R$ 129,90	Quantidad
 Wolverine: O Velho Logan /Panini Valor: R$ 67,00	Quantidade: 1
 	Estado: Excelente
 
-Yu Yu Hakusho 2ª Série /JBC Valor: R$ 412,09	Quantidade: 17
+Yu Yu Hakusho 2ª Série/JBC Valor: R$ 445,23	Quantidade: 18
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -1274,6 +1339,7 @@ Yu Yu Hakusho 2ª Série /JBC Valor: R$ 412,09	Quantidade: 17
  nº 15	Estado: Excelente
  nº 16	Estado: Excelente
  nº 17	Estado: Excelente
+ nº 18	Estado: Excelente
 
 Zagor /Rge Valor: R$ 0,00	Quantidade: 2
  nº 18	Estado: Bom

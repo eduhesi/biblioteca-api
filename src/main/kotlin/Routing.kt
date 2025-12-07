@@ -7,6 +7,7 @@ import io.ktor.server.resources.Resources
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
+import utils.mangas
 
 fun Application.configureRouting() {
     install(Resources)
@@ -16,7 +17,7 @@ fun Application.configureRouting() {
         }
         get<Articles> { article ->
             // Get all articles ...
-            call.respond("List of articles sorted starting from ${article.sort}")
+            call.respond("List of articles sorted starting from ${article.sort}\n\n${mangas.map { it.title }}")
         }
     }
 }

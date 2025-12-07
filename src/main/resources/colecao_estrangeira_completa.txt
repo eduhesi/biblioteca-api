@@ -1,6 +1,10 @@
 5 Seconds Before A Witch Falls In Love (2022) /Seven Seas Entertainment Valor: R$ 73,33	Quantidade: 1
  nº 1	Estado: Excelente
 
+April Showers Bring May Flowers (2024) /Yen Press Valor: R$ 145,19	Quantidade: 2
+ nº 1	Estado: Excelente
+ nº 2	Estado: Excelente
+
 Black Gakkou Ni Tsutomete Shimatta Sensei (2018) /Nihon Bungeisha Valor: R$ 168,63	Quantidade: 6
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
@@ -42,9 +46,10 @@ Conditions of Paradise, The (2020) /Seven Seas Entertainment Valor: R$ 182,58	Qu
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
 
-Cutie And The Beast (2020) /Seven Seas Entertainment Valor: R$ 153,17	Quantidade: 2
+Cutie And The Beast (2020) /Seven Seas Entertainment Valor: R$ 207,64	Quantidade: 3
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
+ nº 3	Estado: Excelente
 
 Days of Love At Seagull Villa (2020) /Seven Seas Entertainment Valor: R$ 214,14	Quantidade: 3
  nº 1	Estado: Excelente
@@ -111,10 +116,11 @@ I Married My Best Friend To Shut My Parents Up (2019) /Seven Seas Entertainment 
 Jk-Chan To Tomodachi No Okan (2021) /Kadokawa Shoten Valor: R$ 39,27	Quantidade: 1
 	Estado: Excelente
 
-Kase-San And Yamada (2020) /Seven Seas Entertainment Valor: R$ 217,46	Quantidade: 3
+Kase-San And Yamada (2020) /Seven Seas Entertainment Valor: R$ 302,20	Quantidade: 4
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
+ nº 4	Estado: Excelente
 
 Kase-San And… (2017) /Seven Seas Entertainment Valor: R$ 361,02	Quantidade: 5
  nº 1	Estado: Excelente
@@ -123,7 +129,7 @@ Kase-San And… (2017) /Seven Seas Entertainment Valor: R$ 361,02	Quantidade: 5
  nº 4	Estado: Excelente
  nº 5	Estado: Excelente
 
-Komi Can't Communicate (2019) /Viz Media Valor: R$ 1.755,16	Quantidade: 32
+Komi Can't Communicate (2019) /Viz Media Valor: R$ 1.840,10	Quantidade: 33
  nº 1	Estado: Excelente
  nº 2	Estado: Excelente
  nº 3	Estado: Excelente
@@ -156,12 +162,16 @@ Komi Can't Communicate (2019) /Viz Media Valor: R$ 1.755,16	Quantidade: 32
  nº 30	Estado: Excelente
  nº 31	Estado: Excelente
  nº 32	Estado: Excelente
+ nº 33	Estado: Excelente
 
 Komi-San Wa Komyushou Desu. (2016) /Shogakukan Valor: R$ 100,92	Quantidade: 2
  nº 1	Estado: Excelente
  nº 11	Estado: Excelente
 
 Lilies Blooming In 100 Days (2023) /Kadokawa Shoten Valor: R$ 46,09	Quantidade: 1
+	Estado: Excelente
+
+Miracleman: The Original Epic (2023) /Marvel Comics Valor: R$ 206,61	Quantidade: 1
 	Estado: Excelente
 
 Monologue Woven For You (2022) /Seven Seas Entertainment Valor: R$ 206,34	Quantidade: 3
@@ -181,6 +191,9 @@ No Matter What You Say, Furi-San Is Scary! (2021) /Seven Seas Entertainment Valo
  nº 3	Estado: Excelente
  nº 4	Estado: Excelente
  nº 5	Estado: Excelente
+
+Not So Shoujo Love Story /Viz Media Valor: R$ 105,82	Quantidade: 1
+ nº 1	Estado: Excelente
 
 Our Teachers Are Dating! (2020) /Seven Seas Entertainment Valor: R$ 187,20	Quantidade: 4
  nº 1	Estado: Excelente
