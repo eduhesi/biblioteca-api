@@ -2,7 +2,7 @@ version: '3'
 
 services:
   neo4jdb:
-    container_name: neo4j_anibook
+    container_name: neo4j_estante
     image: neo4j:latest
     ports:
       - '7474:7474'

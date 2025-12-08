@@ -9,7 +9,7 @@ MERGE (p:Publisher {id: publisher.id, name: publisher.name, logo: publisher.logo
 
 LOAD CSV WITH HEADERS FROM 'file:///collection.csv' AS collection
 MERGE
-  (c:Collection {id:       collection.id, name: collection.name, publication_year: collection.publication_year,
+  (c:Collection {id:       collection.id, name: collection.name, publicationYear: collection.publication_year,
                  complete: collection.complete, id_author: collection.id_author});
 
 MATCH (a:Author), (c:Collection)

@@ -1,0 +1,10 @@
+{
+  "collection": {
+    "name": "New entry",
+    "publicationYear": 2025,
+    "complete": false
+  },
+  "author": ["Author 1", "Akira Toryama"],
+  "publisher": "New Publisher",
+  "genre": ["Genre 1", "aventura"]
+}

@@ -43,4 +43,5 @@ dependencies {
     implementation(libs.logback.classic)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+    implementation("org.neo4j.driver:neo4j-java-driver:5.18.0")
 }

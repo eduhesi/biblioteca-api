@@ -1,12 +1,12 @@
 package br.com.manogarrafa
 
 import io.ktor.server.application.*
-import utils.readFile
-import utils.showList
-import utils.showTotal
+import io.ktor.server.netty.EngineMain
+import br.com.manogarrafa.utils.readFile
+import br.com.manogarrafa.utils.showTotal
 
 fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
+    EngineMain.main(args)
 }
 
 fun Application.module() {
