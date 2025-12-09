@@ -5,10 +5,20 @@ import br.com.manogarrafa.entities.AddCollectionRequest
 import br.com.manogarrafa.repositories.collection.PostCollectionRepository
 
 class PostCollectionRepositoryImpl() : PostCollectionRepository {
-
     override suspend fun invoke(request: AddCollectionRequest): Map<String, String> {
-        val query =
-            "CREATE (c:Collection {name: \$name, publicationYear: \$year, complete: \$complete}) WITH c UNWIND \$authors AS authorName MERGE (a:Author {name: authorName}) MERGE (a)-[:WRITE]->(c) WITH c MERGE (p:Publisher {name: \$publisher}) WITH c UNWIND \$genres AS genreName MERGE (g:Genre {name: genreName}) MERGE (c)-[:HAS_GENRE]->(g)"
+        val query = $$"""
+        CREATE (c:Collection {name: $name, publicationYear: $year, complete: $complete})
+        WITH c
+        UNWIND $authors AS authorName
+            MERGE (a:Author {name: authorName})
+            MERGE (a)-[:WRITE]->(c)
+        WITH c
+        MERGE (p:Publisher {name: $publisher})
+        WITH c
+        UNWIND $genres AS genreName
+            MERGE (g:Genre {name: genreName})
+            MERGE (c)-[:HAS_GENRE]->(g)
+        """.trimIndent()
         return try {
             Neo4jConnection.session.use { session ->
                 session.executeWrite { tx ->
@@ -22,7 +32,7 @@ class PostCollectionRepositoryImpl() : PostCollectionRepository {
                             "publisher" to request.publisher,
                             "genres" to request.genre
                         )
-                    ).consume()
+                    ).consume() // <- Consome o resultado aqui!
                 }
             }
             mapOf("status" to "success")
