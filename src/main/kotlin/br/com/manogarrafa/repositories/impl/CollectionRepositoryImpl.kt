@@ -1,11 +1,20 @@
-package br.com.manogarrafa.repositories.collection.impl
+package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.Neo4jConnection
 import br.com.manogarrafa.entities.AddCollectionRequest
-import br.com.manogarrafa.repositories.collection.PostCollectionRepository
+import br.com.manogarrafa.repositories.CollectionRepository
 
-class PostCollectionRepositoryImpl() : PostCollectionRepository {
-    override suspend fun invoke(request: AddCollectionRequest): Map<String, String> {
+class CollectionRepositoryImpl : CollectionRepository {
+    override suspend fun getAll(): List<String> {
+        val resultList = Neo4jConnection.session.executeRead { tx ->
+            val result = tx.run("MATCH (c:Collection) RETURN c.name")
+            result.list { record -> record.get("c.name").asString() } // Consome aqui!
+        }
+        Neo4jConnection.session.close()
+        return resultList
+    }
+
+    override suspend fun addCollection(request: AddCollectionRequest): Map<String, String> {
         val query = $$"""
         CREATE (c:Collection {name: $name, publicationYear: $year, complete: $complete})
         WITH c
