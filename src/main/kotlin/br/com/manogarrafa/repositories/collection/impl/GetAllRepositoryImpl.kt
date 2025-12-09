@@ -5,9 +5,11 @@ import br.com.manogarrafa.repositories.collection.GetAllRepository
 
 class GetAllRepositoryImpl : GetAllRepository {
     override suspend fun invoke(): List<String> {
-        val query = "MATCH (c:Collection) RETURN c.name"
-        val result = Neo4jConnection.session.run(query)
-        val names = result.list { it.get("c.name").asString() }
-        return names
+        val resultList = Neo4jConnection.session.executeRead { tx ->
+            val result = tx.run("MATCH (c:Collection) RETURN c.name")
+            result.list { record -> record.get("c.name").asString() } // Consome aqui!
+        }
+        Neo4jConnection.session.close()
+        return resultList
     }
 }
