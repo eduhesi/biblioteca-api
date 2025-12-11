@@ -1,16 +1,39 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.Neo4jConnection
+import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.AddCollectionRequest
+import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.repositories.CollectionRepository
 
 class CollectionRepositoryImpl : CollectionRepository {
-    override suspend fun getAll(): List<String> {
-        val resultList = Neo4jConnection.session.executeRead { tx ->
-            val result = tx.run("MATCH (c:Collection) RETURN c.name")
-            result.list { record -> record.get("c.name").asString() } // Consome aqui!
+    override suspend fun getAll(): QueryResult<List<CollectionResponse>> {
+        val query = """
+        MATCH (c:Collection)<-[e:EDITION]-()
+        WITH c, e
+        WITH c, collect(e) AS editions
+        RETURN
+            c.name AS collectionName,
+            editions[0].cover AS firstEditionCover,
+            c.publicationYear AS year,
+            size(editions) AS totalEditions
+        ORDER BY collectionName
+        """.trimIndent()
+
+        val resultList = runQuery {
+            it.executeRead { tx ->
+                val result = tx.run(query)
+                result.list { record ->
+                    CollectionResponse(
+                        name = record.get("collectionName").asString(),
+                        cover = record.get("firstEditionCover").asString(),
+                        publicationYear = record.get("year").asInt(),
+                        totalEditions = record.get("totalEditions").asInt()
+                    )
+                }
+            }
         }
-        Neo4jConnection.session.close()
         return resultList
     }
 

@@ -1,8 +1,10 @@
 package br.com.manogarrafa.repositories
 
+import br.com.manogarrafa.database.QueryResult
 import br.com.manogarrafa.entities.AddCollectionRequest
+import br.com.manogarrafa.entities.CollectionResponse
 
 interface CollectionRepository {
-    suspend fun getAll(): List<String>
+    suspend fun getAll(): QueryResult<List<CollectionResponse>>
     suspend fun addCollection(request: AddCollectionRequest): Map<String, String>
 }

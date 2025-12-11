@@ -16,3 +16,16 @@ data class AddCollectionRequest(
     val publisher: String,
     val genre: List<String>
 )
+
+@Serializable
+data class CollectionResponse(
+    val name: String,
+    val cover: String,
+    val publicationYear: Int,
+    val totalEditions: Int
+)
+
+@Serializable
+data class GetAllCollectionResponse(
+    val items: List<CollectionResponse>
+)
