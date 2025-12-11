@@ -36,7 +36,7 @@ class CollectionRepositoryImpl : CollectionRepository {
         return resultList
     }
 
-    override suspend fun addCollection(request: AddCollectionRequest): QueryResult<Any> {
+    override suspend fun addCollectionWithAuthorAndPublisherAndGenre(request: AddCollectionRequest): QueryResult<Any> {
         val query = $$"""
         CREATE (c:Collection {name: $name, publicationYear: $year, complete: $complete})
         WITH c
