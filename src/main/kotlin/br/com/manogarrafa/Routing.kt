@@ -1,10 +1,9 @@
 package br.com.manogarrafa
 
-import br.com.manogarrafa.routes.addCollectionRoute
-import br.com.manogarrafa.routes.getAllCollectionsRoute
+import br.com.manogarrafa.routes.collectionRoutes
+import br.com.manogarrafa.routes.genreRoutes
 import io.ktor.resources.*
 import io.ktor.server.application.*
-import io.ktor.server.resources.*
 import io.ktor.server.resources.Resources
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -16,8 +15,8 @@ fun Application.configureRouting() {
         get("/") {
             call.respondText("Hello World!")
         }
-        getAllCollectionsRoute()
-        addCollectionRoute()
+        collectionRoutes()
+        genreRoutes()
     }
 }
 

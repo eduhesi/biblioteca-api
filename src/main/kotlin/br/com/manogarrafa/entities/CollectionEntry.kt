@@ -24,8 +24,3 @@ data class CollectionResponse(
     val publicationYear: Int,
     val totalEditions: Int
 )
-
-@Serializable
-data class GetAllCollectionResponse(
-    val items: List<CollectionResponse>
-)
