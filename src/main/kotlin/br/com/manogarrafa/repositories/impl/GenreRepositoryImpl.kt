@@ -2,6 +2,7 @@ package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
 import br.com.manogarrafa.database.runQuery
+import br.com.manogarrafa.entities.GenreRequest
 import br.com.manogarrafa.repositories.GenreRepository
 
 class GenreRepositoryImpl : GenreRepository {
@@ -32,4 +33,36 @@ class GenreRepositoryImpl : GenreRepository {
 
         return result
     }
+
+    override suspend fun putGenre(data: GenreRequest): QueryResult<Boolean> {
+        val query = $$"""
+        MATCH (g:Genre {name: $oldName})
+        SET g.name = $newName
+        RETURN count(g) as updatedCount
+    """.trimIndent()
+        val params = mapOf("oldName" to data.oldName, "newName" to data.newName)
+        return runQuery { session ->
+            session.executeWrite { tx ->
+                val result = tx.run(query, params)
+                val updatedCount = result.single()["updatedCount"].asInt()
+                updatedCount > 0 // true se houve alteração, false caso contrário
+            }
+        }
+    }
+
+    override suspend fun removeGenre(data: String): QueryResult<Boolean> {
+        val query = $$"""
+        MATCH (g:Genre {name: $name})
+        DETACH DELETE g
+        """.trimIndent()
+        val params = mapOf("name" to data)
+        return runQuery { session ->
+            session.executeWrite { tx ->
+                val result = tx.run(query, params)
+                val nodesDeleted = result.consume().counters().nodesDeleted()
+                nodesDeleted > 0 // true se removeu, false caso contrário
+            }
+        }
+    }
+
 }
