@@ -1,6 +1,5 @@
 package br.com.manogarrafa.repositories.impl
 
-import br.com.manogarrafa.database.Neo4jConnection
 import br.com.manogarrafa.database.QueryResult
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.AddCollectionRequest
@@ -37,7 +36,7 @@ class CollectionRepositoryImpl : CollectionRepository {
         return resultList
     }
 
-    override suspend fun addCollection(request: AddCollectionRequest): Map<String, String> {
+    override suspend fun addCollection(request: AddCollectionRequest): QueryResult<Any> {
         val query = $$"""
         CREATE (c:Collection {name: $name, publicationYear: $year, complete: $complete})
         WITH c
@@ -51,25 +50,19 @@ class CollectionRepositoryImpl : CollectionRepository {
             MERGE (g:Genre {name: genreName})
             MERGE (c)-[:HAS_GENRE]->(g)
         """.trimIndent()
-        return try {
-            Neo4jConnection.session.use { session ->
-                session.executeWrite { tx ->
-                    tx.run(
-                        query,
-                        mapOf(
-                            "name" to request.collection.name,
-                            "year" to request.collection.publicationYear,
-                            "complete" to request.collection.complete,
-                            "authors" to request.author,
-                            "publisher" to request.publisher,
-                            "genres" to request.genre
-                        )
-                    ).consume() // <- Consome o resultado aqui!
-                }
+        return runQuery { session ->
+            session.executeWrite { tx ->
+                tx.run(
+                    query, mapOf(
+                        "name" to request.collection.name,
+                        "year" to request.collection.publicationYear,
+                        "complete" to request.collection.complete,
+                        "authors" to request.author,
+                        "publisher" to request.publisher,
+                        "genres" to request.genre
+                    )
+                ).consume()
             }
-            mapOf("status" to "success")
-        } catch (e: Exception) {
-            mapOf("status" to "error", "message" to e.localizedMessage.orEmpty())
         }
     }
 }

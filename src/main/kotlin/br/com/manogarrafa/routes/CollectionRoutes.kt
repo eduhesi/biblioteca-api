@@ -14,9 +14,10 @@ fun Route.addCollectionRoute() {
     post("/collection") {
         val request = call.receive<AddCollectionRequest>()
 
-        val result = CollectionUseCase(CollectionRepositoryImpl()).addCollection(request)
-
-        call.respond(result)
+        when (val result = CollectionUseCase(CollectionRepositoryImpl()).addCollection(request)) {
+            is QueryResult.Success<Any> -> call.response.status(HttpStatusCode.Created)
+            is QueryResult.Error -> call.respond(HttpStatusCode.BadRequest, result.message)
+        }
     }
 }
 

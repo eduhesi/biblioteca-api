@@ -6,5 +6,5 @@ import br.com.manogarrafa.entities.CollectionResponse
 
 interface CollectionRepository {
     suspend fun getAll(): QueryResult<List<CollectionResponse>>
-    suspend fun addCollection(request: AddCollectionRequest): Map<String, String>
+    suspend fun addCollection(request: AddCollectionRequest): QueryResult<Any>
 }
