@@ -24,7 +24,7 @@ private fun Route.addCollection() {
     }
 }
 
-private fun Route.getAll() {
+fun Route.getAll() {
     get("/collections") {
         response(CollectionUseCase(CollectionRepositoryImpl()).getAll()) {
             call.respond(HttpStatusCode.OK, ResponseList((it)))

@@ -6,7 +6,7 @@ import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
-class AuthorRepositoryImpl : CommonRepository {
+class AuthorRepositoryImpl : CommonRepository<String> {
     override suspend fun getAll(): QueryResult<List<String>> {
         val query = "MATCH (a: Author) return a.name"
         val result = runQuery {

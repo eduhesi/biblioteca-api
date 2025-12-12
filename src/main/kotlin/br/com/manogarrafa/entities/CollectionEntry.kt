@@ -27,6 +27,7 @@ data class CollectionResponse(
 
 @Serializable
 data class EditionRequest(
+    val name: String,
     val cover: String,
     val number: Int,
     val price: Double,

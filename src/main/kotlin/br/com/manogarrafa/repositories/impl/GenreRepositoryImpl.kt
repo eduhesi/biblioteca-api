@@ -6,7 +6,7 @@ import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
-class GenreRepositoryImpl : CommonRepository {
+class GenreRepositoryImpl : CommonRepository<String> {
     override suspend fun getAll(): QueryResult<List<String>> {
         val query = "MATCH (g: Genre) return g.name"
         val result = runQuery {

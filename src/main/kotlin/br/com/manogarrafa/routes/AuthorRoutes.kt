@@ -5,13 +5,7 @@ import br.com.manogarrafa.usecase.CommonUseCase
 import io.ktor.server.routing.Route
 
 fun Route.authorRoutes() {
-    with(
-        BaseRoutes(
-            defaultRoute = "author",
-            routeName = "authors",
-            useCase = CommonUseCase(AuthorRepositoryImpl())
-        )
-    ) {
-        getBaseRoutes()
-    }
+    val repository = AuthorRepositoryImpl()
+    val useCase = CommonUseCase(repository)
+    getBaseRoutes("author", "authors", useCase)
 }

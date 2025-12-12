@@ -5,13 +5,7 @@ import br.com.manogarrafa.usecase.CommonUseCase
 import io.ktor.server.routing.*
 
 fun Route.publisherRoutes() {
-    with(
-        BaseRoutes(
-            defaultRoute = "publisher",
-            routeName = "publishers",
-            useCase = CommonUseCase(PublisherRepositoryImpl())
-        )
-    ) {
-        getBaseRoutes()
-    }
+    val repository = PublisherRepositoryImpl()
+    val useCase = CommonUseCase(repository)
+    getBaseRoutes("publisher", "publishers", useCase)
 }

@@ -5,13 +5,7 @@ import br.com.manogarrafa.usecase.CommonUseCase
 import io.ktor.server.routing.*
 
 fun Route.genreRoutes() {
-    with(
-        BaseRoutes(
-            defaultRoute = "genre",
-            routeName = "genres",
-            useCase = CommonUseCase(GenreRepositoryImpl())
-        )
-    ) {
-        getBaseRoutes()
-    }
+    val repository = GenreRepositoryImpl()
+    val useCase = CommonUseCase(repository)
+    getBaseRoutes("genre", "genres", useCase)
 }

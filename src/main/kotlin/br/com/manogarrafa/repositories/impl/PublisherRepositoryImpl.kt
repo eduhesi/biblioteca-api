@@ -7,7 +7,7 @@ import br.com.manogarrafa.entities.EditionRequest
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
-class PublisherRepositoryImpl : CommonRepository {
+class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
     override suspend fun getAll(): QueryResult<List<String>> {
         val query = "MATCH (p: Publisher) return p.name"
         val result = runQuery {
@@ -100,15 +100,25 @@ class PublisherRepositoryImpl : CommonRepository {
 
     override suspend fun addRelationshipWithCollection(
         tags: List<String>,
-        collections: List<String>
+        collections: List<EditionRequest>
     ): QueryResult<Pair<Int, Int>> {
+        val collectionsParam = collections.map { col ->
+            mapOf(
+                "name" to col.name,
+                "cover" to col.cover,
+                "number" to col.number,
+                "price" to col.price,
+                "status" to col.status,
+                "quantity" to col.quantity
+            )
+        }
         val query = $$"""
         WITH $collections AS collections, $tags AS tags
-        UNWIND collections AS col, UNWIND tags AS pub
+        UNWIND collections AS col
+        UNWIND tags AS pub
         MATCH (c:Collection {name: col.name})
-        MERGE (p:Publisher {name: tagName})
-        WITH c, p
-        MERGE (p)-[:EDITION {number: col.number}]->(c)
+        MERGE (p:Publisher {name: pub})
+        MERGE (p)-[e:EDITION {number: col.number}]->(c)
         ON CREATE SET
             e.cover = col.cover,
             e.price = col.price,
@@ -116,10 +126,10 @@ class PublisherRepositoryImpl : CommonRepository {
             e.quantity = col.quantity
         ON MATCH SET
             e.quantity = coalesce(e.quantity, 0) + col.quantity,
-            e.price = coalesce(e.price, 0) + col.price,
+            e.price = coalesce(e.price, 0) + col.price
         """.trimIndent()
         val params = mapOf(
-            "collections" to collections,
+            "collections" to collectionsParam,
             "tags" to tags
         )
 
