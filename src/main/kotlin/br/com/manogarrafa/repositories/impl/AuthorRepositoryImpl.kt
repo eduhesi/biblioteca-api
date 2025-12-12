@@ -5,13 +5,13 @@ import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
-class GenreRepositoryImpl : CommonRepository {
+class AuthorRepositoryImpl : CommonRepository {
     override suspend fun getAll(): QueryResult<List<String>> {
-        val query = "MATCH (g: Genre) return g.name"
+        val query = "MATCH (a: Author) return a.name"
         val result = runQuery {
             it.executeRead { tx ->
                 val r = tx.run(query)
-                r.list { record -> record.get("g.name").asString() }
+                r.list { record -> record.get("a.name").asString() }
             }
         }
 
@@ -20,13 +20,13 @@ class GenreRepositoryImpl : CommonRepository {
 
     override suspend fun addItems(items: List<String>): QueryResult<Int> {
         val query = $$"""
-        UNWIND $genres AS genreName
-            MERGE (g:Genre {name: genreName})
+        UNWIND $authors AS authorName
+            MERGE (a:Author {name: authorName})
         """.trimIndent()
 
         val result = runQuery {
             val summary = it.executeWrite { tx ->
-                tx.run(query, mapOf("genres" to items)).consume()
+                tx.run(query, mapOf("authors" to items)).consume()
             }
             summary.counters().nodesCreated()
         }
@@ -36,9 +36,9 @@ class GenreRepositoryImpl : CommonRepository {
 
     override suspend fun putItem(data: PutDefaultEntityRequest): QueryResult<Boolean> {
         val query = $$"""
-        MATCH (g:Genre {name: $oldName})
-        SET g.name = $newName
-        RETURN count(g) as updatedCount
+        MATCH (a:Author {name: $oldName})
+        SET a.name = $newName
+        RETURN count(a) as updatedCount
     """.trimIndent()
         val params = mapOf("oldName" to data.oldName, "newName" to data.newName)
         return runQuery { session ->
@@ -52,8 +52,8 @@ class GenreRepositoryImpl : CommonRepository {
 
     override suspend fun removeItem(data: String): QueryResult<Boolean> {
         val query = $$"""
-        MATCH (g:Genre {name: $name})
-        DETACH DELETE g
+        MATCH (a:Author {name: $name})
+        DETACH DELETE a
         """.trimIndent()
         val params = mapOf("name" to data)
         return runQuery { session ->
@@ -64,5 +64,4 @@ class GenreRepositoryImpl : CommonRepository {
             }
         }
     }
-
 }
