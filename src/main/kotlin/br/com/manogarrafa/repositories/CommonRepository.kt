@@ -10,4 +10,5 @@ interface CommonRepository {
     suspend fun putItem(data: PutDefaultEntityRequest): QueryResult<Boolean>
     suspend fun removeItem(data: String): QueryResult<Boolean>
     suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>>
+    suspend fun addRelationshipWithCollection(tags: List<String>, collections: List<String>): QueryResult<Pair<Int, Int>>
 }

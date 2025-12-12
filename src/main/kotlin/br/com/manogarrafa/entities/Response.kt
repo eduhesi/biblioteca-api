@@ -12,3 +12,9 @@ data class PutDefaultEntityRequest(
     val oldName: String,
     val newName: String
 )
+
+@Serializable
+data class CreateRelationshipRequest<T>(
+    val tags: List<String>,
+    val collections: List<T>
+)

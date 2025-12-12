@@ -3,6 +3,7 @@ package br.com.manogarrafa.repositories.impl
 import br.com.manogarrafa.database.QueryResult
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.CollectionResponse
+import br.com.manogarrafa.entities.EditionRequest
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
@@ -95,5 +96,42 @@ class PublisherRepositoryImpl : CommonRepository {
             }
         }
         return resultList
+    }
+
+    override suspend fun addRelationshipWithCollection(
+        tags: List<String>,
+        collections: List<String>
+    ): QueryResult<Pair<Int, Int>> {
+        val query = $$"""
+        WITH $collections AS collections, $tags AS tags
+        UNWIND collections AS col, UNWIND tags AS pub
+        MATCH (c:Collection {name: col.name})
+        MERGE (p:Publisher {name: tagName})
+        WITH c, p
+        MERGE (p)-[:EDITION {number: col.number}]->(c)
+        ON CREATE SET
+            e.cover = col.cover,
+            e.price = col.price,
+            e.status = col.status,
+            e.quantity = col.quantity
+        ON MATCH SET
+            e.quantity = coalesce(e.quantity, 0) + col.quantity,
+            e.price = coalesce(e.price, 0) + col.price,
+        """.trimIndent()
+        val params = mapOf(
+            "collections" to collections,
+            "tags" to tags
+        )
+
+        val result = runQuery {
+            val summary = it.executeWrite { tx ->
+                tx.run(query, params).consume()
+            }
+            val nodesCreated = summary.counters().nodesCreated()
+            val relationshipsCreated = summary.counters().relationshipsCreated()
+            nodesCreated to relationshipsCreated
+        }
+
+        return result
     }
 }

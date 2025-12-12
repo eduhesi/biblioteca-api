@@ -24,3 +24,12 @@ data class CollectionResponse(
     val publicationYear: Int,
     val totalEditions: Int
 )
+
+@Serializable
+data class EditionRequest(
+    val cover: String,
+    val number: Int,
+    val price: Double,
+    val status: String,
+    val quantity: Int
+)

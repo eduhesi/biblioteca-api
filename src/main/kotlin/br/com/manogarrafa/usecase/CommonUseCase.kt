@@ -9,4 +9,6 @@ class CommonUseCase(private val repository: CommonRepository) {
     suspend fun putItem(data: PutDefaultEntityRequest) = repository.putItem(data)
     suspend fun removeItem(name: String) = repository.removeItem(name)
     suspend fun getCollection(name: String) = repository.getCollection(name)
+    suspend fun addRelationshipWithCollection(tags: List<String>, collection: List<String>) =
+        repository.addRelationshipWithCollection(tags, collection)
 }

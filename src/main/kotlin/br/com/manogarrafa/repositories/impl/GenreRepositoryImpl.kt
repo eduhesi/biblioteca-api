@@ -96,4 +96,34 @@ class GenreRepositoryImpl : CommonRepository {
         }
         return resultList
     }
+
+    override suspend fun addRelationshipWithCollection(
+        tags: List<String>,
+        collections: List<String>
+    ): QueryResult<Pair<Int, Int>> {
+        val query = $$"""
+        WITH $collections AS collections, $tags AS tags
+        UNWIND collections AS collectionName
+        MATCH (c:Collection {name: collectionName})
+        WITH c, tags
+        UNWIND tags AS tagName
+        MERGE (g:Genre {name: tagName})
+        MERGE (c)-[:HAS_GENRE]->(g)
+        """.trimIndent()
+        val params = mapOf(
+            "collections" to collections,
+            "tags" to tags
+        )
+
+        val result = runQuery {
+            val summary = it.executeWrite { tx ->
+                tx.run(query, params).consume()
+            }
+            val nodesCreated = summary.counters().nodesCreated()
+            val relationshipsCreated = summary.counters().relationshipsCreated()
+            nodesCreated to relationshipsCreated
+        }
+
+        return result
+    }
 }

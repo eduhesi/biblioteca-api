@@ -1,11 +1,17 @@
 package br.com.manogarrafa.routes
 
 import br.com.manogarrafa.repositories.impl.GenreRepositoryImpl
-import io.ktor.server.routing.Route
+import br.com.manogarrafa.usecase.CommonUseCase
+import io.ktor.server.routing.*
 
 fun Route.genreRoutes() {
-    getBaseRoutes(
-        defaultRoute = "genre",
-        routeName = "genres",
-    ) { GenreRepositoryImpl() }
+    with(
+        BaseRoutes(
+            defaultRoute = "genre",
+            routeName = "genres",
+            useCase = CommonUseCase(GenreRepositoryImpl())
+        )
+    ) {
+        getBaseRoutes()
+    }
 }
