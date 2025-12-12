@@ -3,6 +3,7 @@ package br.com.manogarrafa
 import br.com.manogarrafa.routes.authorRoutes
 import br.com.manogarrafa.routes.collectionRoutes
 import br.com.manogarrafa.routes.genreRoutes
+import br.com.manogarrafa.routes.publisherRoutes
 import io.ktor.resources.*
 import io.ktor.server.application.*
 import io.ktor.server.resources.Resources
@@ -19,6 +20,7 @@ fun Application.configureRouting() {
         collectionRoutes()
         genreRoutes()
         authorRoutes()
+        publisherRoutes()
     }
 }
 
