@@ -2,6 +2,7 @@ package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
 import br.com.manogarrafa.database.runQuery
+import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
@@ -63,5 +64,36 @@ class PublisherRepositoryImpl : CommonRepository {
                 nodesDeleted > 0 // true se removeu, false caso contrário
             }
         }
+    }
+
+    override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {
+        val query = $$"""
+        MATCH (c:Collection)<-[e:EDITION]-(p:Publisher)
+        WHERE p.name = $publisherName
+        WITH c, collect(e) AS editions
+        RETURN
+            c.name AS collectionName,
+            editions[0].cover AS firstEditionCover,
+            c.publicationYear AS year,
+            size(editions) AS totalEditions
+        ORDER BY collectionName
+        """.trimIndent()
+
+        val params = mapOf("publisherName" to name)
+
+        val resultList = runQuery {
+            it.executeRead { tx ->
+                val result = tx.run(query, params)
+                result.list { record ->
+                    CollectionResponse(
+                        name = record.get("collectionName").asString(),
+                        cover = record.get("firstEditionCover").asString(),
+                        publicationYear = record.get("year").asInt(),
+                        totalEditions = record.get("totalEditions").asInt()
+                    )
+                }
+            }
+        }
+        return resultList
     }
 }

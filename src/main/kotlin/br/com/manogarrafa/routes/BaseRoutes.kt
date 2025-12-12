@@ -9,32 +9,48 @@ import io.ktor.http.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.util.getOrFail
 
 fun Route.getBaseRoutes(
     /** edit, delete */
     defaultRoute: String,
     /** getAll, insert */
-    route: String,
+    routeName: String,
     repository: () -> CommonRepository
 ) {
     val useCase: CommonUseCase by lazy { CommonUseCase(repository()) }
-
-    getAll(route, useCase)
-    insertItem(route, useCase)
-    editItem(defaultRoute, useCase)
-    deleteItem(defaultRoute, useCase)
+    route(routeName) {
+        getAll(useCase)
+        insertItem(useCase)
+    }
+    route(defaultRoute) {
+        with(useCase) {
+            getItem(this)
+            editItem(this)
+            deleteItem(this)
+        }
+    }
 }
 
-private fun Route.getAll(route: String, useCase: CommonUseCase) {
-    get("/$route") {
+private fun Route.getItem(useCase: CommonUseCase) {
+    get("/{name}") {
+        val name = call.pathParameters.getOrFail("name").trim()
+        response(useCase.getCollection(name)) {
+            call.respond(HttpStatusCode.OK, ResponseList(it))
+        }
+    }
+}
+
+private fun Route.getAll(useCase: CommonUseCase) {
+    get {
         response(useCase.getAll()) {
             call.respond(HttpStatusCode.OK, ResponseList(it))
         }
     }
 }
 
-private fun Route.insertItem(route: String, useCase: CommonUseCase) {
-    post("/$route") {
+private fun Route.insertItem(useCase: CommonUseCase) {
+    post {
         val request = call.receive<RequestList<String>>()
         response(useCase.addItems(request.items)) {
             //LOg
@@ -44,8 +60,8 @@ private fun Route.insertItem(route: String, useCase: CommonUseCase) {
     }
 }
 
-private fun Route.editItem(route: String, useCase: CommonUseCase) {
-    put("/$route") {
+private fun Route.editItem(useCase: CommonUseCase) {
+    put {
         val request = call.receive<PutDefaultEntityRequest>()
 
         // Validação simples
@@ -64,9 +80,9 @@ private fun Route.editItem(route: String, useCase: CommonUseCase) {
     }
 }
 
-private fun Route.deleteItem(route: String, useCase: CommonUseCase) {
-    delete("/$route/item/{itemName}") {
-        val itemName = call.pathParameters["itemName"]
+private fun Route.deleteItem(useCase: CommonUseCase) {
+    delete("/{name}") {
+        val itemName = call.pathParameters["name"]
 
         if (itemName.isNullOrBlank()) {
             call.respond(HttpStatusCode.BadRequest, mapOf("error" to "Nome não podem ser vazios"))

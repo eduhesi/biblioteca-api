@@ -6,6 +6,6 @@ import io.ktor.server.routing.*
 fun Route.publisherRoutes() {
     getBaseRoutes(
         defaultRoute = "publisher",
-        route = "publishers",
+        routeName = "publishers",
     ) { PublisherRepositoryImpl() }
 }

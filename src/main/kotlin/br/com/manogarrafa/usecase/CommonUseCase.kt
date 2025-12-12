@@ -8,4 +8,5 @@ class CommonUseCase(private val repository: CommonRepository) {
     suspend fun addItems(items: List<String>) = repository.addItems(items)
     suspend fun putItem(data: PutDefaultEntityRequest) = repository.putItem(data)
     suspend fun removeItem(name: String) = repository.removeItem(name)
+    suspend fun getCollection(name: String) = repository.getCollection(name)
 }

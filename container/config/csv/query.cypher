@@ -38,3 +38,7 @@ REMOVE p.id;
 
 MATCH (g:Genre)
 REMOVE g.id;
+
+MATCH (c:Collection)
+  WHERE c.publicationYear IS NOT NULL
+SET c.publicationYear = toInteger(c.publicationYear);

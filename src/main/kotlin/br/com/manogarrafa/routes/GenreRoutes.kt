@@ -6,6 +6,6 @@ import io.ktor.server.routing.Route
 fun Route.genreRoutes() {
     getBaseRoutes(
         defaultRoute = "genre",
-        route = "genres",
+        routeName = "genres",
     ) { GenreRepositoryImpl() }
 }

@@ -6,6 +6,6 @@ import io.ktor.server.routing.Route
 fun Route.authorRoutes() {
     getBaseRoutes(
         defaultRoute = "author",
-        route = "authors",
+        routeName = "authors",
     ) { AuthorRepositoryImpl() }
 }
