@@ -5,6 +5,7 @@ import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 
 interface CommonRepository<R> {
+    val nodeName: String
     suspend fun getAll(): QueryResult<List<String>>
     suspend fun addItems(items: List<String>): QueryResult<Int>
     suspend fun putItem(data: PutDefaultEntityRequest): QueryResult<Boolean>

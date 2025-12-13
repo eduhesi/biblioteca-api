@@ -1,60 +1,34 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.addNodes
 import br.com.manogarrafa.database.deleteNode
 import br.com.manogarrafa.database.getCollectionsBy
+import br.com.manogarrafa.database.getNodes
+import br.com.manogarrafa.database.putNode
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
 import br.com.manogarrafa.repositories.CommonRepository
 
 class AuthorRepositoryImpl : CommonRepository<String> {
-    override suspend fun getAll(): QueryResult<List<String>> {
-        val query = "MATCH (a: Author) return a.name"
-        val result = runQuery {
-            it.executeRead { tx ->
-                val r = tx.run(query)
-                r.list { record -> record.get("a.name").asString() }
-            }
-        }
+    override val nodeName: String
+        get() = "Author"
 
-        return result
+    override suspend fun getAll(): QueryResult<List<String>> {
+        return getNodes()
     }
 
     override suspend fun addItems(items: List<String>): QueryResult<Int> {
-        val query = $$"""
-        UNWIND $authors AS authorName
-            MERGE (a:Author {name: authorName})
-        """.trimIndent()
-
-        val result = runQuery {
-            val summary = it.executeWrite { tx ->
-                tx.run(query, mapOf("authors" to items)).consume()
-            }
-            summary.counters().nodesCreated()
-        }
-
-        return result
+        return addNodes(items)
     }
 
     override suspend fun putItem(data: PutDefaultEntityRequest): QueryResult<Boolean> {
-        val query = $$"""
-        MATCH (a:Author {name: $oldName})
-        SET a.name = $newName
-        RETURN count(a) as updatedCount
-    """.trimIndent()
-        val params = mapOf("oldName" to data.oldName, "newName" to data.newName)
-        return runQuery { session ->
-            session.executeWrite { tx ->
-                val result = tx.run(query, params)
-                val updatedCount = result.single()["updatedCount"].asInt()
-                updatedCount > 0 // true se houve alteração, false caso contrário
-            }
-        }
+       return putNode(data)
     }
 
     override suspend fun removeItem(data: String): QueryResult<Boolean> {
-        return deleteNode(data, "Author")
+        return deleteNode(data)
     }
 
     override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {

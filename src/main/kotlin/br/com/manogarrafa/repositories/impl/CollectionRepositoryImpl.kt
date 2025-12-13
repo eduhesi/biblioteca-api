@@ -1,7 +1,6 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
-import br.com.manogarrafa.database.deleteNode
 import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.AddCollectionRequest
@@ -93,6 +92,17 @@ class CollectionRepositoryImpl : CollectionRepository {
     }
 
     override suspend fun removeItem(data: String): QueryResult<Boolean> {
-        return deleteNode(data, "Collection")
+        val query = $$"""
+        MATCH (p: Collection {name: $name})
+        DETACH DELETE p
+        """.trimIndent()
+        val params = mapOf("name" to data)
+        return runQuery { session ->
+            session.executeWrite { tx ->
+                val result = tx.run(query, params)
+                val nodesDeleted = result.consume().counters().nodesDeleted()
+                nodesDeleted > 0 // true se removeu, false caso contrário
+            }
+        }
     }
 }
