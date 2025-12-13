@@ -76,7 +76,7 @@ class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
             c.name AS collectionName,
             editions[0].cover AS firstEditionCover,
             c.publicationYear AS year,
-            size(editions) AS totalEditions
+            reduce(total = 0, ed IN editions | total + coalesce(ed.quantity, 0)) AS totalEditions
         ORDER BY collectionName
         """.trimIndent()
 
@@ -121,12 +121,12 @@ class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
         MERGE (p)-[e:EDITION {number: col.number}]->(c)
         ON CREATE SET
             e.cover = col.cover,
-            e.price = col.price,
+            e.price = col.price * col.quantity,
             e.status = col.status,
             e.quantity = col.quantity
         ON MATCH SET
             e.quantity = coalesce(e.quantity, 0) + col.quantity,
-            e.price = coalesce(e.price, 0) + col.price
+            e.price = coalesce(e.price, 0) + (col.price * col.quantity)
         """.trimIndent()
         val params = mapOf(
             "collections" to collectionsParam,

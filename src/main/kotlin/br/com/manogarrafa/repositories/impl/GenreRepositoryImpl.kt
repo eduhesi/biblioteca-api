@@ -75,7 +75,7 @@ class GenreRepositoryImpl : CommonRepository<String> {
             c.name AS collectionName,
             editions[0].cover AS firstEditionCover,
             c.publicationYear AS year,
-            size(editions) AS totalEditions
+            reduce(total = 0, ed IN editions | total + coalesce(ed.quantity, 0)) AS totalEditions
         ORDER BY collectionName
         """.trimIndent()
 
