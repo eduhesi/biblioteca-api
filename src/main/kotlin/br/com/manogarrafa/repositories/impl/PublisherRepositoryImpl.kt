@@ -1,6 +1,7 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.deleteNode
 import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.CollectionResponse
@@ -54,18 +55,7 @@ class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
     }
 
     override suspend fun removeItem(data: String): QueryResult<Boolean> {
-        val query = $$"""
-        MATCH (p:Publisher {name: $name})
-        DETACH DELETE p
-        """.trimIndent()
-        val params = mapOf("name" to data)
-        return runQuery { session ->
-            session.executeWrite { tx ->
-                val result = tx.run(query, params)
-                val nodesDeleted = result.consume().counters().nodesDeleted()
-                nodesDeleted > 0 // true se removeu, false caso contrário
-            }
-        }
+       return deleteNode(data, "Publisher")
     }
 
     override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {

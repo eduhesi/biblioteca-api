@@ -1,9 +1,11 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.deleteNode
 import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.AddCollectionRequest
+import br.com.manogarrafa.entities.CollectionData
 import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.repositories.CollectionRepository
 
@@ -40,5 +42,57 @@ class CollectionRepositoryImpl : CollectionRepository {
                 ).consume()
             }
         }
+    }
+
+    override suspend fun addItems(items: List<CollectionData>): QueryResult<Int> {
+        val itemsMap = items.map { item ->
+            mapOf(
+                "name" to item.name,
+                "publicationYear" to item.publicationYear,
+                "complete" to item.complete,
+            )
+        }
+        val query = $$"""
+            UNWIND $items AS item
+            MERGE (c:Collection {name: item.name})
+            ON CREATE SET c.publicationYear = item.publicationYear,
+                          c.complete = item.complete
+        """.trimIndent()
+
+        val result = runQuery {
+            val summary = it.executeWrite { tx ->
+                tx.run(query, mapOf("items" to itemsMap)).consume()
+            }
+            summary.counters().nodesCreated()
+        }
+
+        return result
+    }
+
+    override suspend fun putItem(ref: String, data: CollectionData): QueryResult<Boolean> {
+        val query = $$"""
+        MERGE (c:Collection {name: $ref})
+        SET c.publicationYear = $year,
+            c.complete = $complete,
+            c.name = $name
+        RETURN count(c) as updatedCount
+        """.trimIndent()
+        val params = mapOf(
+            "ref" to ref,
+            "year" to data.publicationYear,
+            "complete" to data.complete,
+            "name" to data.name
+        )
+        return runQuery { session ->
+            session.executeWrite { tx ->
+                val result = tx.run(query, params)
+                val updatedCount = result.single()["updatedCount"].asInt()
+                updatedCount > 0 // true se houve alteração, false caso contrário
+            }
+        }
+    }
+
+    override suspend fun removeItem(data: String): QueryResult<Boolean> {
+        return deleteNode(data, "Collection")
     }
 }

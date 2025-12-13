@@ -39,3 +39,18 @@ fun getCollectionsBy(match: String, param: String, hasFilter: Boolean): QueryRes
 
     return resultList
 }
+
+fun deleteNode(name: String, type: String): QueryResult<Boolean> {
+    val query = $$"""
+        MATCH (p: $$type {name: $name})
+        DETACH DELETE p
+        """.trimIndent()
+    val params = mapOf("name" to name)
+    return runQuery { session ->
+        session.executeWrite { tx ->
+            val result = tx.run(query, params)
+            val nodesDeleted = result.consume().counters().nodesDeleted()
+            nodesDeleted > 0 // true se removeu, false caso contrário
+        }
+    }
+}
