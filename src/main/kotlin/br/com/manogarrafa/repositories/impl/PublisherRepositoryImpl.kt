@@ -1,6 +1,7 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.EditionRequest
@@ -68,19 +69,7 @@ class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
     }
 
     override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {
-        val query = $$"""
-        MATCH (c:Collection)<-[e:EDITION]-(p:Publisher)
-        WHERE p.name = $publisherName
-        WITH c, collect(e) AS editions
-        RETURN
-            c.name AS collectionName,
-            editions[0].cover AS firstEditionCover,
-            c.publicationYear AS year,
-            reduce(total = 0, ed IN editions | total + coalesce(ed.quantity, 0)) AS totalEditions
-        ORDER BY collectionName
-        """.trimIndent()
-
-        val params = mapOf("publisherName" to name)
+        val (query, params) = getCollectionsBy("MATCH (c:Collection)<-[e:EDITION]-(t:Publisher)", name)
 
         val resultList = runQuery {
             it.executeRead { tx ->

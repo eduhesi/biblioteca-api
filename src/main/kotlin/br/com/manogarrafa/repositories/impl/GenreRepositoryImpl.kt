@@ -1,6 +1,7 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.CollectionResponse
 import br.com.manogarrafa.entities.PutDefaultEntityRequest
@@ -67,19 +68,7 @@ class GenreRepositoryImpl : CommonRepository<String> {
     }
 
     override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {
-        val query = $$"""
-        MATCH (g:Genre)<-[:HAS_GENRE]-(c:Collection)<-[e:EDITION]-()
-        WHERE g.name = $genreName
-        WITH c, collect(e) AS editions
-        RETURN
-            c.name AS collectionName,
-            editions[0].cover AS firstEditionCover,
-            c.publicationYear AS year,
-            reduce(total = 0, ed IN editions | total + coalesce(ed.quantity, 0)) AS totalEditions
-        ORDER BY collectionName
-        """.trimIndent()
-
-        val params = mapOf("genreName" to name)
+        val (query, params) = getCollectionsBy("MATCH (t:Genre)<-[:HAS_GENRE]-(c:Collection)<-[e:EDITION]-()", name)
 
         val resultList = runQuery {
             it.executeRead { tx ->
