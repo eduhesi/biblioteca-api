@@ -42,12 +42,19 @@ REMOVE g.id;
 MATCH (c:Collection)
   WHERE c.publicationYear IS NOT NULL
 SET c.publicationYear = toInteger(c.publicationYear);
+
 MATCH ()-[e:EDITION]->()
   WHERE e.number IS NOT NULL
 SET e.number = toInteger(e.number);
+
 MATCH ()-[e:EDITION]->()
   WHERE e.quantity IS NOT NULL
 SET e.quantity = toInteger(e.quantity);
+
 MATCH ()-[e:EDITION]->()
   WHERE e.price IS NOT NULL
 SET e.price = toFloat(e.price);
+
+MATCH (c:Collection)
+  WHERE c.complete IS NOT NULL
+SET c.complete = toBoolean(c.complete)
