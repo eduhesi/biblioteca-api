@@ -1,6 +1,7 @@
 package br.com.manogarrafa.repositories.impl
 
 import br.com.manogarrafa.database.QueryResult
+import br.com.manogarrafa.database.getCollectionsBy
 import br.com.manogarrafa.database.runQuery
 import br.com.manogarrafa.entities.AddCollectionRequest
 import br.com.manogarrafa.entities.CollectionResponse
@@ -8,32 +9,7 @@ import br.com.manogarrafa.repositories.CollectionRepository
 
 class CollectionRepositoryImpl : CollectionRepository {
     override suspend fun getAll(): QueryResult<List<CollectionResponse>> {
-        val query = """
-        MATCH (c:Collection)<-[e:EDITION]-()
-        WITH c, e
-        WITH c, collect(e) AS editions
-        RETURN
-            c.name AS collectionName,
-            editions[0].cover AS firstEditionCover,
-            c.publicationYear AS year,
-            reduce(total = 0, ed IN editions | total + coalesce(ed.quantity, 0)) AS totalEditions
-        ORDER BY collectionName
-        """.trimIndent()
-
-        val resultList = runQuery {
-            it.executeRead { tx ->
-                val result = tx.run(query)
-                result.list { record ->
-                    CollectionResponse(
-                        name = record.get("collectionName").asString(),
-                        cover = record.get("firstEditionCover").asString(),
-                        publicationYear = record.get("year").asInt(),
-                        totalEditions = record.get("totalEditions").asInt()
-                    )
-                }
-            }
-        }
-        return resultList
+        return getCollectionsBy("MATCH (c:Collection)<-[e:EDITION]-()", "", false)
     }
 
     override suspend fun addCollectionWithAuthorAndPublisherAndGenre(request: AddCollectionRequest): QueryResult<Any> {

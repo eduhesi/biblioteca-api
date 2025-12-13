@@ -69,22 +69,7 @@ class PublisherRepositoryImpl : CommonRepository<EditionRequest> {
     }
 
     override suspend fun getCollection(name: String): QueryResult<List<CollectionResponse>> {
-        val (query, params) = getCollectionsBy("MATCH (c:Collection)<-[e:EDITION]-(t:Publisher)", name)
-
-        val resultList = runQuery {
-            it.executeRead { tx ->
-                val result = tx.run(query, params)
-                result.list { record ->
-                    CollectionResponse(
-                        name = record.get("collectionName").asString(),
-                        cover = record.get("firstEditionCover").asString(),
-                        publicationYear = record.get("year").asInt(),
-                        totalEditions = record.get("totalEditions").asInt()
-                    )
-                }
-            }
-        }
-        return resultList
+        return getCollectionsBy("MATCH (c:Collection)<-[e:EDITION]-(t:Publisher)", name, true)
     }
 
     override suspend fun addRelationshipWithCollection(

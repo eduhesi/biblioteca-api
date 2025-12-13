@@ -1,9 +1,17 @@
 package br.com.manogarrafa.database
 
-fun getCollectionsBy(match: String, param: String): Pair<String, Map<String, String>> {
+import br.com.manogarrafa.entities.CollectionResponse
+
+fun getCollectionsBy(match: String, param: String, hasFilter: Boolean): QueryResult<List<CollectionResponse>> {
+    val filter = if (hasFilter) {
+        $$"WHERE t.name = $tagName"
+    } else {
+        ""
+    }
+
     val query = $$"""
         $$match
-        WHERE t.name = $tagName
+        $$filter
         WITH c, collect(e) AS editions
         RETURN
             c.name AS collectionName,
@@ -15,5 +23,19 @@ fun getCollectionsBy(match: String, param: String): Pair<String, Map<String, Str
 
     val params = mapOf("tagName" to param)
 
-    return query to params
+    val resultList = runQuery {
+        it.executeRead { tx ->
+            val result = tx.run(query, params)
+            result.list { record ->
+                CollectionResponse(
+                    name = record.get("collectionName").asString(),
+                    cover = record.get("firstEditionCover").asString(),
+                    publicationYear = record.get("year").asInt(),
+                    totalEditions = record.get("totalEditions").asInt()
+                )
+            }
+        }
+    }
+
+    return resultList
 }
